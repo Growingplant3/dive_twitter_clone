@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :set_tweet, only: %i[show]
+
   def index
     @tweets = Tweet.all.order(created_at: "desc")
   end
@@ -33,5 +35,9 @@ class TweetsController < ApplicationController
   private
     def tweet_params
       params.require(:tweet).permit(:content)
+    end
+
+    def set_tweet
+      @tweet = Tweet.find(params[:id])
     end
 end

@@ -1,2 +1,13 @@
-<h1>Tweets#show</h1>
-<p>Find me in app/views/tweets/show.html.erb</p>
+<div class="tweet-form">
+  <h4><%= @tweet.content %></h4>
+
+  <p>
+    投稿日：<%= @tweet.created_at.to_s.slice(0..19) %>
+  </p>
+
+  <p>
+    編集日：<%= @tweet.updated_at.to_s.slice(0..19) %>
+  </p>
+</div>
+
+<%= link_to "ツイート一覧へ戻る", tweets_path %>
