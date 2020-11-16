@@ -18,7 +18,7 @@
 <% end %>
 
 <div class="tweet-form">
-  <%= form_with(model: @tweet, local: true, url: confirm_tweets_path) do |form| %>
+  <%= form_with(model: @tweet, local: true, url: choice_path) do |form| %>
     <table>
       <tr>
         <th>
@@ -30,7 +30,11 @@
       </tr>
       <tr>
         <th>
-          <%= form.submit "編集する" %>
+          <% if action_name == "new" || action_name == "confirm" || action_name == "create" %>
+            <%= form.submit "新規登録する" %>
+          <% elsif action_name == "edit" || action_name == "update" %>
+            <%= form.submit "編集する" %>
+          <% end %>
         </th>
       </tr>
     </table>
