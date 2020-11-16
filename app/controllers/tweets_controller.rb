@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[show edit update]
+  before_action :set_tweet, only: %i[show edit update destroy]
 
   def index
     @tweets = Tweet.all.order(created_at: "desc")
@@ -37,6 +37,9 @@ class TweetsController < ApplicationController
   end
 
   def destroy
+    @tweet.destroy
+    flash[:notice] = "削除に成功しました。"
+    redirect_to tweets_path
   end
 
   private
