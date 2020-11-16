@@ -14,4 +14,6 @@
 
 <%= link_to "ツイート内容を編集する", edit_tweet_path(@tweet) %>
 <br>
+<%= link_to "ツイートを削除する", tweet_path(@tweet), method: :delete, data: { confirm: "削除してもよろしいですか？"} %>
+<br>
 <%= link_to "ツイート一覧へ戻る", tweets_path %>
