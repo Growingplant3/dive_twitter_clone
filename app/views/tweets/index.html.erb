@@ -1,2 +1,11 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<h1>ツイート一覧</h1>
+<% @tweets.each do |tweet| %>
+  <div>
+    <h4>
+      <%= tweet.content %>
+    </h4>
+    <p>
+      <%= tweet.created_at.to_s.slice(0..19) %>
+    </p>
+  </div>
+<% end %>
