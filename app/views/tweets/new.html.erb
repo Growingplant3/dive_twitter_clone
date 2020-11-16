@@ -1,11 +1,42 @@
 <h1>ツイート新規登録</h1>
-<div>
-  <%= form_with(model: @tweet, local: true) do |form| %>
+
+<% flash.each do |key, value| %>
+  <div>
     <p>
-      <%= form.label :content %>
-      <%= form.text_field :content %>
+      <%= value %>
     </p>
-    <%= form.submit "新規登録する" %>
+  </div>
+<% end %>
+
+<% if @tweet.errors.any? %>
+  <div>
+    <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="tweet-form">
+  <%= form_with(model: @tweet, local: true) do |form| %>
+    <table>
+      <tr>
+        <th>
+          <%= form.label :content %>
+        </th>
+        <td>
+          <%= form.text_field :content %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <%= form.submit "新規登録する" %>
+        </th>
+      </tr>
+    </table>
   <% end %>
 </div>
+
 <%= link_to "ツイート一覧へ戻る", tweets_path %>
