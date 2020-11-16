@@ -9,7 +9,7 @@
 <% @tweets.each do |tweet| %>
   <div class="tweet-form">
     <h4>
-      <%= tweet.content %>
+      <%= link_to "#{tweet.content}", tweet_path(tweet) %>
     </h4>
     <p>
       <%= tweet.created_at.to_s.slice(0..19) %>
