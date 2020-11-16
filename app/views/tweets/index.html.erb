@@ -1,6 +1,13 @@
 <h1>ツイート一覧</h1>
+
+<% flash.each do |key, value| %>
+  <p>
+    <%= value %>
+  </p>
+<% end %> 
+
 <% @tweets.each do |tweet| %>
-  <div>
+  <div class="tweet-form">
     <h4>
       <%= tweet.content %>
     </h4>
