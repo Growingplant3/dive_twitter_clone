@@ -1,0 +1,17 @@
+<div class="tweet-form" %>
+  <%= form_with(model: @tweet, local: true, url: tweets_path) do |form| %>
+    <table>
+      <tr>
+        <th>
+          <%= "ツイート内容：#{@tweet.content}" %>
+        </th>
+        <%= form.hidden_field :content, value: @tweet.content %>
+      </tr>
+      <tr>
+        <th>
+          <%= form.submit "新規登録する" %>
+        </th>
+      </tr>
+    </table>
+  <% end %>
+</div>
