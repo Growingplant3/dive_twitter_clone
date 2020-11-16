@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[show edit]
+  before_action :set_tweet, only: %i[show edit update]
 
   def index
     @tweets = Tweet.all.order(created_at: "desc")
@@ -27,6 +27,13 @@ class TweetsController < ApplicationController
   end
 
   def update
+    if @tweet.update(tweet_params)
+      flash[:notice] = "編集に成功しました。"
+      redirect_to tweets_path
+    else
+      flash[:alert] = "編集に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
