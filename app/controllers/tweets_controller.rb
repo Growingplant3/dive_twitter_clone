@@ -42,6 +42,11 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def confirm
+    @tweet = Tweet.new(tweet_params)
+    render :new unless @tweet.valid?
+  end
+
   private
     def tweet_params
       params.require(:tweet).permit(:content)
