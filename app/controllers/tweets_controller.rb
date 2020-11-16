@@ -11,12 +11,16 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      flash[:notice] = "新規登録に成功しました。"
-      redirect_to tweets_path
-    else
-      flash[:alert] = "新規登録に失敗しました。"
+    if params[:back]
       render :new
+    else
+      if @tweet.save
+        flash[:notice] = "新規登録に成功しました。"
+        redirect_to tweets_path
+      else
+        flash[:alert] = "新規登録に失敗しました。"
+        render :new
+      end
     end
   end
 
